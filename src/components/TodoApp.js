@@ -53,6 +53,9 @@ export default class TodoApp extends Component {
   handleTodoSubmit(evt) {
     evt.preventDefault();
     const newTodo = { name: this.state.currentTodo, isComplete: false };
+    saveTodo(newTodo).then(({ data }) => {
+      this.setState({ currentTodo: '', todos: [...this.state.todos, data] })
+    })
   }
 
   render() {
